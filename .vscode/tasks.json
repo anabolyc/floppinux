@@ -12,13 +12,13 @@
         {
             "label": "build: run build",
             "type": "shell",
-            "command": "docker run -it --rm -v $PWD/out:/src/out $(cat tag)",
+            "command": "docker run -it --rm --privileged -v $PWD/out:/src/out $(cat tag)",
             "problemMatcher": []
         },
         {
             "label": "build: run bash",
             "type": "shell",
-            "command": "docker run -it --rm -v $PWD/out:/src/out $(cat tag) /bin/bash",
+            "command": "docker run -it --rm --privileged -v $PWD/out:/src/out $(cat tag) /bin/bash",
             "problemMatcher": []
         },
         {

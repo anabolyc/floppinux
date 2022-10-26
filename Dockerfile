@@ -17,9 +17,9 @@ RUN apt-get update && apt-get install -y \
     bc \
     libncurses-dev \
     libcrypt-dev \
-    cpio
-
-ENV FORCE_UNSAFE_CONFIGURE 1
+    cpio \
+    dosfstools \
+    syslinux
 
 WORKDIR /src
 ADD . /src

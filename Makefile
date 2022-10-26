@@ -125,9 +125,10 @@ make_floppy_image:
 	syslinux --install $(FSIMAGE)
 	mkdir -p $(MOUNT_POINT)
 	mount -o loop $(FSIMAGE) $(MOUNT_POINT)
-	cp $(KERNEL) $(ROOTFS) $(SYSLINUX_CFG) $(MOUNT_POINT)
+	cp out/$(KERNEL) out/$(ROOTFS) $(SYSLINUX_CFG) $(MOUNT_POINT)
 	sync
 	umount $(MOUNT_POINT)
+	mv $(FSIMAGE) ./out
 
 test_filesystem:
 	qemu-system-i386 -kernel $(KERNEL) -initrd $(ROOTFS)
