@@ -1,8 +1,9 @@
-name: ESP IDF
+name: Build floppinux
 on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Build floppinux
     steps:
     - uses: actions/checkout@v2
       with:
@@ -11,3 +12,9 @@ jobs:
     - name: Build docker image
       run: |
         docker build -t $(cat tag) .
+
+    - name: Build floppinux image
+      run: |
+        docker run -it --rm -v $PWD/out:/src/out $(cat tag)
+
+    
