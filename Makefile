@@ -107,10 +107,10 @@ endif
 make_rootfs:
 	mkdir -p $(FILESYSTEM_DIR)/{dev,proc,etc/init.d,sys,tmp}
 	if [ ! -f $(FILESYSTEM_DIR)/dev/console ]; then \
-		mknod $(FILESYSTEM_DIR)/dev/console c 5 1 \
+		mknod $(FILESYSTEM_DIR)/dev/console c 5 1; \
 	fi
 	if [ ! -f $(FILESYSTEM_DIR)/dev/null ]; then \
-		mknod $(FILESYSTEM_DIR)/dev/null c 1 3 \
+		mknod $(FILESYSTEM_DIR)/dev/null c 1 3; \
 	fi
 	cp $(INITTAB) $(FILESYSTEM_DIR)/etc/
 	cp $(RC) $(FILESYSTEM_DIR)/etc/init.d/

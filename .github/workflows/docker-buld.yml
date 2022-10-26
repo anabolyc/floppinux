@@ -15,6 +15,6 @@ jobs:
 
     - name: Build floppinux image
       run: |
-        docker run -it --rm -v $PWD/out:/src/out $(cat tag)
+        docker run --rm -v $PWD/out:/src/out $(cat tag)
 
     
