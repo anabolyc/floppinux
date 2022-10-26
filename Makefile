@@ -131,13 +131,13 @@ make_floppy_image:
 	mv $(FSIMAGE) ./out
 
 test_filesystem:
-	qemu-system-i386 -kernel $(KERNEL) -initrd $(ROOTFS)
+	qemu-system-i386 -kernel out/$(KERNEL) -initrd out/$(ROOTFS)
 
 test_floppy_image:
-	qemu-system-i386 -fda $(FSIMAGE)
+	qemu-system-i386 -fda out/$(FSIMAGE)
 
 size:
-	mount -o loop $(FSIMAGE) $(MOUNT_POINT)
+	mount -o loop out/$(FSIMAGE) $(MOUNT_POINT)
 	df -h $(MOUNT_POINT)
 	ls -lah $(MOUNT_POINT)
 	umount $(MOUNT_POINT)
@@ -146,7 +146,7 @@ clean: clean_linux clean_busybox clean_filesystem
 
 clean_linux:
 	$(MAKE) -C $(LINUX_DIR) clean
-	rm -f $(KERNEL)
+	rm -f out/$(KERNEL)
 
 clean_busybox:
 	$(MAKE) -C $(BUSYBOX_DIR) clean

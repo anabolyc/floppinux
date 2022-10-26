@@ -19,5 +19,5 @@ jobs:
 
     - uses: actions/upload-artifact@v3
       with:
-        name: floppinux.img
-        path: out/floppinux.img
+        name: floppinux
+        path: out/
